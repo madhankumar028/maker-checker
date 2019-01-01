@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/iamsiddhant05/maker-checker#readme",
   "dependencies": {
+    "async": "2.6.1",
     "body-parser": "1.18.3",
     "express": "4.16.4",
     "mongoose": "5.4.1"
