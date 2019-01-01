@@ -1,7 +1,8 @@
 const express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
-    allRoutes = require('./app/routes');
+    allRoutes = require('./app/routes'),
+    mongo = require('./app/helpers/mongo');
 
 app.use(bodyParser.json());
 
