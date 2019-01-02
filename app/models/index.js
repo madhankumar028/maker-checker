@@ -1,4 +1,4 @@
-const UserSchema = require('./UserSchema'),
-    MediaSchema = require('./MediaSchema');
+const Users = require('./UserSchema'),
+    Media = require('./MediaSchema');
 
-module.exports = { MediaSchema, UserSchema };
+module.exports = { Media, Users };

@@ -1,8 +1,9 @@
 const express = require('express').Router,
     router = express(),
-    { AuthController } = require('../controllers');
+    { AuthController } = require('../controllers'),
+    { emailIdCheck, validateLoginPayload } = require('../middlewares');
 
-router.get('/login', AuthController.login);
-router.get('/signup', AuthController.signUp);
+router.post('/login', validateLoginPayload, AuthController.login);
+router.post('/signup', emailIdCheck, AuthController.signUp);
 
 module.exports = router;
