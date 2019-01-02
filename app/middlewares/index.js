@@ -1,3 +1,5 @@
-const authenticateUser = require('./authenticateUser');
+const authenticateUser = require('./authenticateUser'),
+    emailIdCheck = require('./emailIdCheck'),
+    validateLoginPayload = require('./validateLoginPayload');
 
-module.exports = { authenticateUser };
+module.exports = { authenticateUser, emailIdCheck, validateLoginPayload };
