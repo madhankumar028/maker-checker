@@ -1,10 +1,10 @@
 const express = require('express').Router,
     router = express(),
-    { authenticateUser } = require('../middlewares'),
+    { authenticateUser, authourizeUser } = require('../middlewares'),
     { CheckerController } = require('../controllers');
 
 
-router.get('/getAllPendingRequests', authenticateUser, CheckerController.pendingRequest);
-router.put('/updateMediaStatus', authenticateUser, CheckerController.updateStatus);
+router.get('/getAllPendingRequests', authenticateUser, authourizeUser.authorizeChecker, CheckerController.pendingRequest);
+router.put('/updateMediaStatus', authenticateUser, authourizeUser.authorizeChecker, CheckerController.updateStatus);
 
 module.exports = router;

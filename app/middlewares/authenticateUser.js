@@ -12,15 +12,8 @@ module.exports = (req, res, next) => {
             }
 
             if (userData) {
-                if (userData.userType === _.get(req.headers, 'usertype')) {
-                    req.userData = userData;
-                    return next();
-                }
-                else {
-                    return res.json({
-                        err: 'User accessing invalid route'
-                    })
-                }
+                req.userData = userData;
+                return next();
             }
             else {
                 return res.json({
