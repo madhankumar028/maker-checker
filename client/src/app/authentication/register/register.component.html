@@ -1,0 +1,43 @@
+<div id="register">
+
+    <div id="register-form-wrapper">
+
+        <div id="register-form">
+
+            <div class="title">CREATE AN ACCOUNT</div>
+
+            <form name="registerForm" [formGroup]="registerForm" novalidate>
+
+                <mat-form-field>
+                    <input matInput placeholder="Name" formControlName="name">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput placeholder="Email" formControlName="email">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput type="password" placeholder="Password" formControlName="password">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput type="password" placeholder="Password (Confirm)" formControlName="passwordConfirm">
+                </mat-form-field>
+
+                <button mat-raised-button color="accent" class="submit-button" aria-label="CREATE AN ACCOUNT"
+                        [disabled]="registerForm.invalid">
+                    CREATE AN ACCOUNT
+                </button>
+
+            </form>
+
+            <div class="register">
+                <span class="text">Already have an account?</span>
+                <a class="link" [routerLink]="'/login'">Login</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
