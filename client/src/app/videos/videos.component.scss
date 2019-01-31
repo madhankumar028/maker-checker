@@ -1,0 +1,25 @@
+.videos-page {
+    width: 100%;    
+    background: url('/assets/images/backgrounds/dark-material-bg.jpg') no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+.cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 100px;
+}
+
+.example-card {
+    max-width: 400px;
+    margin-top: 20px;
+    margin-left: 70px;
+}
+
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}

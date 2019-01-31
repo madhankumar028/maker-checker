@@ -1,11 +1,12 @@
 <div id="login">
+    <a class="router router-link" [routerLink]="'/videos'">Watch Videos</a>
     <div id="login-form-wrapper">
         <div id="login-form">
             <div class="logo">
                 <img src="assets/images/logos/angular-material.png" alt="company_logo">
             </div>
             <div class="title">LOGIN TO YOUR ACCOUNT</div>
-            <form name="loginForm" [formGroup]="loginForm" novalidate>
+            <form name="loginForm" [formGroup]="loginForm" (ngSubmit)="loginHandler(loginForm.value)" novalidate>
                 <mat-form-field>
                     <input matInput placeholder="Email" formControlName="email">
                 </mat-form-field>

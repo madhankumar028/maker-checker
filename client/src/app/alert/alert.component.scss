@@ -1,0 +1,13 @@
+.alert {
+    width: 20%;
+    position: absolute;
+    right: 5%;
+    top: 10%;
+    border-radius: 4px;
+}
+.alert-success {
+    background: green;
+}
+.alert-danger {
+    background: red;
+}

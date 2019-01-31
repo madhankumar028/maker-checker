@@ -46,17 +46,24 @@ import {
 import { CdkTableModule } from '@angular/cdk/table';
 
 import { StoryRegisterComponent } from './authentication/register/register.component';
+import { StoryVideoComponent } from './videos/videos.component';
+import { HttpClientModule } from '@angular/common/http';
+import { StoryAlertService } from './alert.service';
+import { StoryAlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StoryLoginComponent,
     StoryRegisterComponent,
+    StoryVideoComponent,
+    StoryAlertComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
+    HttpClientModule, 
     MatAutocompleteModule,
     MatButtonModule,
     MatButtonToggleModule,
@@ -128,7 +135,8 @@ import { StoryRegisterComponent } from './authentication/register/register.compo
     CdkTableModule
   ],
   providers: [
-    {provide: MAT_LABEL_GLOBAL_OPTIONS, useValue: {float: 'always'}}
+    {provide: MAT_LABEL_GLOBAL_OPTIONS, useValue: {float: 'always'}},
+    StoryAlertService,
   ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,10 @@
+import { StoryAlertService } from './../../alert.service';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import {map} from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
     selector   : 'story-register',
@@ -13,7 +18,10 @@ export class StoryRegisterComponent implements OnInit {
     registerFormErrors: any;
 
     constructor(
-        private formBuilder: FormBuilder
+        private formBuilder: FormBuilder,
+        private httpClient: HttpClient,
+        private router: Router,
+        private alertService: StoryAlertService,
     ) {}
 
     ngOnInit() {
@@ -23,6 +31,25 @@ export class StoryRegisterComponent implements OnInit {
             password       : ['', Validators.required],
             passwordConfirm: ['', [Validators.required, confirmPassword]]
         });
+    }
+
+    signupHandler(userDetails) {
+        let self = this;
+        this.signupService(userDetails)
+            .subscribe({
+                next(res) { 
+                    console.log(res);
+                    self.alertService.success('Registration successful', true);
+                    self.router.navigateByUrl('/login');
+                },
+                error(err) { console.warn(err);},
+                complete() { console.info('signUp completed'); }
+            });
+    }
+
+    signupService(userDetails) {
+        return this.httpClient.post(`http://localhost:3000/api/signup`, userDetails)
+            .pipe(map(res => res));
     }
 }
 
