@@ -27,9 +27,10 @@ export class StoryRegisterComponent implements OnInit {
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
             name           : ['', Validators.required],
-            email          : ['', [Validators.required, Validators.email]],
+            emailId        : ['', [Validators.required, Validators.email]],
             password       : ['', Validators.required],
-            passwordConfirm: ['', [Validators.required, confirmPassword]]
+            passwordConfirm: ['', [Validators.required, confirmPassword]],
+            userType       : ['', Validators.required]
         });
     }
 
@@ -39,7 +40,11 @@ export class StoryRegisterComponent implements OnInit {
             .subscribe({
                 next(res) { 
                     console.log(res);
-                    self.alertService.success('Registration successful', true);
+                    if (!res['err']) {
+                        self.alertService.success('Registration successful', true);
+                    } else {
+                        self.alertService.success(res['err'], true);
+                    }
                     self.router.navigateByUrl('/login');
                 },
                 error(err) { console.warn(err);},
@@ -54,22 +59,22 @@ export class StoryRegisterComponent implements OnInit {
 }
 
 function confirmPassword(control: AbstractControl) {
-    if ( !control.parent || !control ) {
+    if (!control.parent || !control) {
         return;
     }
 
     const password = control.parent.get('password');
     const passwordConfirm = control.parent.get('passwordConfirm');
 
-    if ( !password || !passwordConfirm ) {
+    if (!password || !passwordConfirm) {
         return;
     }
 
-    if ( passwordConfirm.value === '' ) {
+    if (!passwordConfirm.value) {
         return;
     }
 
-    if ( password.value !== passwordConfirm.value ) {
+    if (password.value !== passwordConfirm.value) {
         return {
             passwordsNotMatch: true
         };

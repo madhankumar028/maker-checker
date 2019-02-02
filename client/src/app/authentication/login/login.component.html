@@ -13,6 +13,10 @@
                 <mat-form-field>
                     <input matInput type="password" placeholder="Password" formControlName="password">
                 </mat-form-field>
+                <mat-radio-group formControlName="userType">
+                    <mat-radio-button value="CHECKER">Checker</mat-radio-button>
+                    <mat-radio-button value="MAKER">Maker</mat-radio-button>
+                </mat-radio-group>
                 <button mat-raised-button color="accent" class="submit-button" aria-label="LOG IN"
                         [disabled]="loginForm.invalid">
                     LOGIN

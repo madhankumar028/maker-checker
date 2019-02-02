@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
-import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { StoryAlertService } from 'src/app/alert.service';
+
+import { map } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 
 @Component({
     selector   : 'story-login',
@@ -30,7 +32,8 @@ export class StoryLoginComponent implements OnInit {
     buildLoginForm() {
         this.loginForm = this.formBuilder.group({
             email   : ['', [Validators.required, Validators.email]],
-            password: ['', Validators.required]
+            password: ['', Validators.required],
+            userType: ['', Validators.required]
         });
     }
 
@@ -47,15 +50,20 @@ export class StoryLoginComponent implements OnInit {
                     }
                 },
                 error(err) {
-                    console.log(err);
+                    console.warn(err);
                     self.alertService.error(err, true);
                 },
-                complete() { console.log('completed');}
+                complete() {
+                    console.info('User Login completed');
+                }
             });
     }
 
     loginService(userCredentials) {
         return this.httpClient.post(`http://localhost:3000/api/login`, userCredentials)
-            .pipe(map(res => res));
+            .pipe(
+                map(res => res),
+                catchError(err => { console.warn(err); return err})
+            );
     }
 }
