@@ -44,6 +44,7 @@ export class StoryLoginComponent implements OnInit {
                 next(res) {
                     console.log(res);
                     if (!res['err']) {
+                        localStorage.setItem('token', res['userData'].userToken);
                         self.router.navigateByUrl('/videos');
                     } else {
                         self.alertService.error(res['err'], true);

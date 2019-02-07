@@ -50,6 +50,7 @@ import { StoryVideoComponent } from './videos/videos.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StoryAlertService } from './alert.service';
 import { StoryAlertComponent } from './alert/alert.component';
+import { StoryService } from './app.service';
 
 @NgModule({
   declarations: [
@@ -137,6 +138,7 @@ import { StoryAlertComponent } from './alert/alert.component';
   providers: [
     {provide: MAT_LABEL_GLOBAL_OPTIONS, useValue: {float: 'always'}},
     StoryAlertService,
+    StoryService
   ],
   bootstrap: [AppComponent]
 })

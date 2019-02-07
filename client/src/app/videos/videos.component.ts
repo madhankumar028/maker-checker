@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 import { map } from 'rxjs/operators';
+import { StoryService } from '../app.service';
 
 @Component({
     selector: 'story-video',
@@ -12,7 +13,8 @@ import { map } from 'rxjs/operators';
 export class StoryVideoComponent implements OnInit {
 
     constructor(
-        private httpClient: HttpClient
+        private httpClient: HttpClient,
+        private appService: StoryService,
     ) { }
 
     ngOnInit() { 
@@ -25,7 +27,8 @@ export class StoryVideoComponent implements OnInit {
     }
 
     getAllVideosService() {
-        return this.httpClient.get(`http://localhost:3000/api/getMediaByArtist`)
+        const headers = this.appService.getHeaders();
+        return this.httpClient.get(`http://localhost:3000/api/getMediaByArtist`, {headers})
             .pipe(map(res => res));
     }
 }

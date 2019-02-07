@@ -36,6 +36,9 @@ export class StoryRegisterComponent implements OnInit {
 
     signupHandler(userDetails) {
         let self = this;
+        
+        delete userDetails['passwordConfirm'];
+
         this.signupService(userDetails)
             .subscribe({
                 next(res) { 
