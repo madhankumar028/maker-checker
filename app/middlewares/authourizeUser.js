@@ -1,7 +1,7 @@
 module.exports = {
     authorizeUser: (req, res, next) => {
         if (req.userData.userType === 'USER') {
-            next();
+             return next();
         }
 
         return res.json({
@@ -11,7 +11,7 @@ module.exports = {
 
     authorizeMaker: (req, res, next) => {
         if (req.userData.userType === 'MAKER') {
-            next();
+            return next();
         }
 
         return res.json({
@@ -21,7 +21,7 @@ module.exports = {
 
     authorizeChecker: (req, res, next) => {
         if (req.userData.userType === 'CHECKER') {
-            next();
+            return next();
         }
 
         return res.json({

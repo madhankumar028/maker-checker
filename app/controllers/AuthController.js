@@ -3,9 +3,7 @@ const _ = require('lodash'),
 
 module.exports = {
     login: (req, res) => {
-        console.log(req);
-        Users.findOne({ emailId: _.get(req.body, 'email') }, (err, doc) => {
-            console.log(err);
+        Users.findOne({ emailId: _.get(req.body, 'emailId') }, (err, doc) => {
             if (err) {
                 return res.json({
                     err: 'Something went wrong',
