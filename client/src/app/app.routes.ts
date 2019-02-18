@@ -1,7 +1,9 @@
+import { AuthGuard } from './app.guard';
 import { StoryVideoComponent } from './videos/videos.component';
 import { Routes } from "@angular/router";
 import { StoryLoginComponent } from "./authentication/login/login.component";
 import { StoryRegisterComponent } from "./authentication/register/register.component";
+import { StoryCreateVideosComponent } from './videos/create-videos/create-videos.component';
 
 export const ROUTES: Routes = [
     {
@@ -11,14 +13,22 @@ export const ROUTES: Routes = [
     },
     {
         path: 'login',
-        component: StoryLoginComponent
+        component: StoryLoginComponent,
     },
     {
         path: 'register',
-        component: StoryRegisterComponent
+        component: StoryRegisterComponent,
     },
     {
-        path: 'videos',
-        component: StoryVideoComponent
+        path: 'home',
+        component: StoryVideoComponent,
+        canActivate: [AuthGuard],
+        children: [
+            {
+                path: 'upload-videos',
+                component: StoryCreateVideosComponent,
+                canActivate: [AuthGuard]
+            }
+        ]
     }
 ];

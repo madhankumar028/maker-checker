@@ -50,6 +50,7 @@ import { StoryVideoComponent } from './videos/videos.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StoryAlertService } from './alert.service';
 import { StoryAlertComponent } from './alert/alert.component';
+import { StoryCreateVideosComponent } from './videos/create-videos/create-videos.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { StoryAlertComponent } from './alert/alert.component';
     StoryRegisterComponent,
     StoryVideoComponent,
     StoryAlertComponent,
+    StoryCreateVideosComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,6 +84,7 @@ import { StoryAlertComponent } from './alert/alert.component';
     MatPaginatorModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
+    MatIconModule,
     MatRadioModule,
     MatRippleModule,
     MatSelectModule,
@@ -116,6 +119,7 @@ import { StoryAlertComponent } from './alert/alert.component';
     MatListModule,
     MatMenuModule,
     MatNativeDateModule,
+    MatIconModule,
     MatPaginatorModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,

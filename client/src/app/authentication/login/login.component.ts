@@ -22,7 +22,7 @@ export class StoryLoginComponent implements OnInit {
         private formBuilder: FormBuilder,
         private httpClient: HttpClient,
         private router: Router,
-        private alertService: StoryAlertService
+        private alertService: StoryAlertService,
     ) {}
 
     ngOnInit() {
@@ -31,7 +31,7 @@ export class StoryLoginComponent implements OnInit {
 
     buildLoginForm() {
         this.loginForm = this.formBuilder.group({
-            email   : ['', [Validators.required, Validators.email]],
+            emailId : ['', [Validators.required, Validators.email]],
             password: ['', Validators.required],
             userType: ['', Validators.required]
         });
@@ -44,7 +44,10 @@ export class StoryLoginComponent implements OnInit {
                 next(res) {
                     console.log(res);
                     if (!res['err']) {
-                        self.router.navigateByUrl('/videos');
+                        localStorage.setItem('token', res['userData'].userToken);
+                        
+                        localStorage.setItem('userType', res['userData'].userType);
+                        self.router.navigateByUrl('/home');
                     } else {
                         self.alertService.error(res['err'], true);
                     }

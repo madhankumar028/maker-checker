@@ -1,5 +1,5 @@
 <div id="login">
-    <a class="router router-link" [routerLink]="'/videos'">Watch Videos</a>
+    <a class="router router-link" [routerLink]="'/home'">Watch Videos</a>
     <div id="login-form-wrapper">
         <div id="login-form">
             <div class="logo">
@@ -8,7 +8,7 @@
             <div class="title">LOGIN TO YOUR ACCOUNT</div>
             <form name="loginForm" [formGroup]="loginForm" (ngSubmit)="loginHandler(loginForm.value)" novalidate>
                 <mat-form-field>
-                    <input matInput placeholder="Email" formControlName="email">
+                    <input matInput placeholder="Email" formControlName="emailId">
                 </mat-form-field>
                 <mat-form-field>
                     <input matInput type="password" placeholder="Password" formControlName="password">
